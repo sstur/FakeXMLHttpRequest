@@ -11,6 +11,49 @@
  * Copyright (c) 2011 Sven Fuchs, Christian Johansen
  */
 
+var normRequestHeaders = {
+  'accept': 'Accept',
+  'accept-charset': 'Accept-Charset',
+  'accept-encoding': 'Accept-Encoding',
+  'accept-language': 'Accept-Language',
+  'accept-datetime': 'Accept-Datetime',
+  'authorization': 'Authorization',
+  'cache-control': 'Cache-Control',
+  'connection': 'Connection',
+  'cookie': 'Cookie',
+  'content-length': 'Content-Length',
+  'content-md5': 'Content-MD5',
+  'content-type': 'Content-Type',
+  'date': 'Date',
+  'expect': 'Expect',
+  'from': 'From',
+  'host': 'Host',
+  'if-match': 'If-Match',
+  'if-modified-since': 'If-Modified-Since',
+  'if-none-match': 'If-None-Match',
+  'if-range': 'If-Range',
+  'if-unmodified-since': 'If-Unmodified-Since',
+  'max-forwards': 'Max-Forwards',
+  'pragma': 'Pragma',
+  'proxy-authorization': 'Proxy-Authorization',
+  'range': 'Range',
+  'referer': 'Referer',
+  'te': 'TE',
+  'upgrade': 'Upgrade',
+  'user-agent': 'User-Agent',
+  'via': 'Via',
+  'warning': 'Warning',
+  'x-requested-with': 'X-Requested-With',
+  'x-do-not-track': 'X-Do-Not-Track',
+  'x-forwarded-for': 'X-Forwarded-For',
+  'x-att-deviceid': 'X-ATT-DeviceId',
+  'x-wap-profile': 'X-Wap-Profile'
+};
+
+function getNormRequestHeader(name) {
+  return normRequestHeaders[name.toLowerCase()] || name;
+}
+
 var _Event = function Event(type, bubbles, cancelable, target) {
   this.type = type;
   this.bubbles = bubbles;
@@ -247,6 +290,7 @@ var FakeXMLHttpRequestProto = {
   */
   setRequestHeader: function setRequestHeader(header, value) {
     verifyState(this);
+    header = getNormRequestHeader(header);
 
     if (unsafeHeaders[header] || /^(Sec-|Proxy-)/.test(header)) {
       throw new Error("Refused to set unsafe header \"" + header + "\"");
