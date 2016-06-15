@@ -1,16 +1,17 @@
 {
-  "name": "fake-xml-http-request",
+  "name": "xhr-pretender",
   "version": "1.4.0",
-  "description": "test infrastructure for a fake XMLHttpRequest object",
-  "main": "fake_xml_http_request.js",
-  "repository": "https://github.com/trek/FakeXMLHttpRequest.git",
+  "description": "A fake XMLHttpRequest",
+  "main": "main.js",
+  "repository": "https://github.com/sstur/xhr-pretender",
   "scripts": {
-    "test": "esperanto -i src/fake-xml-http-request.js -t umd -b -n FakeXMLHttpRequest -o fake_xml_http_request.js && ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
+    "build": "esperanto -i src/main.js -t umd -b -n FakeXMLHttpRequest -o main.js",
+    "test": "npm run build && karma start --single-run --browsers PhantomJS"
   },
   "author": {
     "name": "Trek Glowacki"
   },
-  "homepage": "https://github.com/trek/FakeXMLHttpRequest",
+  "homepage": "https://github.com/sstur/xhr-pretender",
   "license": "MIT",
   "devDependencies": {
     "esperanto": "^0.6.15",

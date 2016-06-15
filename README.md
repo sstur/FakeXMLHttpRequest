@@ -1,3 +1,9 @@
+# A library for mock HTTP requests
+
+This is forked from the excellent [FakeXMLHttpRequest](https://github.com/trek/FakeXMLHttpRequest) project. The difference is that this version normalized request headers (to better support this [fetch polyfill](https://github.com/sstur/fetchme)).
+
+The original readme follows:
+
 # FakeXMLHttpRequest [![Build Status](https://travis-ci.org/pretenderjs/FakeXMLHttpRequest.png?branch=master)](https://travis-ci.org/pretenderjs/FakeXMLHttpRequest)
 
 This library provide a fake XMLHttpRequest object for testing browser-based
